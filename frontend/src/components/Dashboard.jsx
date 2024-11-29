@@ -112,9 +112,9 @@ const Table = () => {
 
   return (
     <div className="">
-      <div className="w-full py-6 font-bold px-10 bg-cyan-700 text-white">
+      {/* <div className="w-full py-6 font-bold px-10 bg-cyan-700 text-white">
         Dashboard
-      </div>
+      </div> */}
       <div className="overflow-x-auto p-8">
         <table className="table-auto w-full border-collapse border border-gray-200">
           <thead className="bg-gray-100">
