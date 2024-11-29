@@ -50,6 +50,7 @@ const register = async (req, res) => {
   }
 };
 
+// login
 const login = async (req, res) => {
   //  get username and password from req.body
   // find user
@@ -96,4 +97,35 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+// get all register user
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error.message);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+// delete the user
+
+const deleteUsers = async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Delete user from the database
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+module.exports = { register, login, getUsers, deleteUsers };
