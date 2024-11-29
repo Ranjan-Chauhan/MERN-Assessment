@@ -13,19 +13,9 @@ const register = async (req, res) => {
   // return res
 
   try {
-    const { username, email, dateOfBirth, password } = req.body;
+    console.log(req.body);
 
-    // validation - not empaty
-    /*
-   if (
-      [username, email, dateOfBirth, password].some(
-        (field) => field?.trim() === ""
-      )
-    ) {
-      // throw new ApiError(400, "All fields are required!!");
-      return res.status(400).json({ message: "All fields are required!!" });
-    }
-  */
+    const { username, email, dateOfBirth, password } = req.body;
 
     // Validate required fields
     if (!username || !email || !dateOfBirth || !password) {
@@ -40,6 +30,8 @@ const register = async (req, res) => {
         .json({ message: "User with username & email already exist" });
     }
 
+    const formattedDateOfBirth = new Date(dateOfBirth);
+
     // hashed password
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -47,7 +39,7 @@ const register = async (req, res) => {
     const user = await User.create({
       username: username.toLowerCase(),
       email,
-      dateOfBirth,
+      dateOfBirth: formattedDateOfBirth,
       password: hashedPassword,
     });
     return res

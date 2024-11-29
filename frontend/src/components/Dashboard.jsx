@@ -88,7 +88,7 @@ const Table = () => {
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 5; // Number of rows per page
+  const rowsPerPage = 5;
   const totalPages = Math.ceil(users.length / rowsPerPage);
 
   // Get current page data

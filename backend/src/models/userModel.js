@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema(
     dateOfBirth: {
       type: Date,
       required: true,
-      trim: true,
     },
     password: {
       type: String,
