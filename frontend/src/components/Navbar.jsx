@@ -39,6 +39,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const authToken = localStorage.getItem("authToken");
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -73,12 +74,14 @@ const Navbar = () => {
       </NavLink>
 
       {/* Logout button */}
-      <button
-        onClick={handleLogout}
-        className="text-white hover:opacity-75 font-bold"
-      >
-        Logout
-      </button>
+      {authToken && (
+        <button
+          onClick={handleLogout}
+          className="text-white hover:opacity-75 font-bold"
+        >
+          Logout
+        </button>
+      )}
     </nav>
   );
 };

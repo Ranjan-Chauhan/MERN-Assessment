@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -87,9 +87,9 @@ const Login = () => {
                 />
                 <span className="ml-2">Remember me</span>
               </label>
-              <a href="#" className="text-teal-400 hover:underline">
+              <Link to="#" className="text-teal-400 hover:underline">
                 Forgot your password?
-              </a>
+              </Link>
             </div>
             <button
               type="submit"

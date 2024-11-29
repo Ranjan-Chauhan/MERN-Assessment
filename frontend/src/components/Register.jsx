@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -114,6 +114,13 @@ const Register = () => {
                 className="w-full bg-gray-700 text-white p-3 rounded-lg outline-none placeholder-gray-400 focus:ring-2 focus:ring-teal-500"
                 required
               />
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <p className="ml-1">Already have a account?</p>
+
+              <Link to="/login" className="text-teal-400 mr-1 hover:underline">
+                Login
+              </Link>
             </div>
 
             <button className="w-full bg-teal-400 text-black font-bold py-2 mt-4 rounded-lg hover:bg-teal-500 transition-all duration-200">
